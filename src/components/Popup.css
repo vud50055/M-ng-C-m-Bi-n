@@ -1,0 +1,51 @@
+/* Popup.css */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7); /* Dark background with opacity */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure the popup is above other content */
+}
+
+.popup-content {
+  background: white; /* White background for the popup */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px; /* Padding for the content */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  width: 150px; /* Set the width of the popup */
+  height: 300px; /* Set the height of the popup */
+  display: flex; /* Flexbox for alignment */
+  flex-direction: column; /* Stack items vertically */
+  justify-content: space-between; /* Space between items */
+  text-align: center; /* Center text within the popup */
+}
+
+.popup-title {
+  font-size: 1.2rem; /* Adjusted font size for title */
+  margin-bottom: 10px; /* Space below title */
+  color: #007bff; /* Custom color for the title */
+}
+
+.popup-message {
+  font-size: 1rem; /* Normal font size for message */
+  margin-bottom: 20px; /* Space below message */
+}
+
+.popup-close-button {
+  background-color: #007bff; /* Button color */
+  color: white; /* Text color for the button */
+  border: none; /* Remove default border */
+  border-radius: 4px; /* Rounded corners for button */
+  padding: 10px 15px; /* Padding for button */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Transition effect for background color */
+}
+
+.popup-close-button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}

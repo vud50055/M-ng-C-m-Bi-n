@@ -1,0 +1,269 @@
+body {
+  font-family: "Arial", sans-serif; /* Thay đổi font chữ cho toàn bộ ứng dụng */
+  background-color: #f0f4f8; /* Màu nền nhẹ nhàng cho toàn bộ trang */
+  margin: 0; /* Bỏ margin mặc định */
+  line-height: 1.6; /* Tăng chiều cao dòng để dễ đọc hơn */
+}
+
+.dashboard {
+  transition: background-color 0.5s;
+  padding: 30px; /* Tăng padding để tạo không gian hơn */
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Tăng độ mờ cho bóng */
+  max-width: 800px; /* Giới hạn chiều rộng tối đa */
+  margin: 20px auto; /* Tạo khoảng cách đều từ trên và dưới */
+  background-color: white; /* Nền trắng cho bảng điều khiển */
+  position: relative; /* Để có thể dùng pseudo-element */
+}
+.dashboard h1 {
+  text-align: center;
+  margin: 20px 0;
+  color: #007bff;
+  opacity: 0; /* Start hidden */
+  animation: fadeIn 1s forwards; /* Apply fade-in animation */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px); /* Start slightly above */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* End at normal position */
+  }
+}
+
+.hot {
+  background-color: #ffcccc; /* Màu nền cho nhiệt độ cao */
+}
+
+.cold {
+  background-color: #ccffff; /* Màu nền cho nhiệt độ thấp */
+}
+
+.normal {
+  background-color: #ffffff; /* Màu nền cho nhiệt độ bình thường */
+}
+
+.fixed-blocks {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.fixed-block {
+  border: 1px solid #ddd; /* Đường viền nhẹ cho block */
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  background-color: #f9f9f9; /* Màu nền cho block */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ hơn */
+  flex: 1;
+  margin: 0 10px;
+  transition: transform 0.3s, box-shadow 0.3s; /* Thay đổi tốc độ hiệu ứng */
+  position: relative; /* Để có thể dùng hiệu ứng pseudo */
+}
+
+.fixed-block:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); /* Tăng độ mờ khi hover */
+}
+
+.fixed-block:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px; /* Thanh chỉ báo màu */
+  border-radius: 8px 8px 0 0; /* Bo tròn góc trên */
+}
+
+.analysis-result {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #007bff;
+  border-radius: 8px;
+  background-color: #e7f3ff;
+  color: #0056b3;
+  font-weight: bold;
+  text-align: center;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* Tối hơn một chút */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px); /* Đưa popup vào từ trên */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menu {
+  background-color: #1d7ddd; /* Màu nền cho menu (sẫm hơn) */
+  padding: 15px 30px; /* Tăng padding để có nhiều không gian hơn */
+  border-radius: 8px; /* Bo tròn góc */
+  margin: 20px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Thêm đổ bóng */
+}
+
+.menu ul {
+  list-style: none; /* Bỏ dấu chấm cho danh sách */
+  display: flex; /* Hiển thị menu theo chiều ngang */
+  justify-content: space-around; /* Căn giữa các mục menu */
+  padding: 0;
+}
+
+.menu li {
+  margin: 0 20px; /* Khoảng cách giữa các mục menu */
+  color: white; /* Màu chữ trắng */
+  cursor: pointer; /* Hiệu ứng khi di chuột */
+  transition: color 0.3s, transform 0.2s; /* Thêm hiệu ứng cho transform */
+  position: relative; /* Để tạo hiệu ứng cho pseudo-element */
+}
+
+.menu li:hover {
+  color: #ffcc00; /* Màu chữ khi hover */
+  transform: scale(1.1); /* Phóng to một chút khi hover */
+}
+
+.menu li.active {
+  font-weight: bold; /* Đậm chữ cho mục đang hoạt động */
+  text-decoration: underline; /* Gạch chân cho mục đang hoạt động */
+}
+
+/* Thêm hiệu ứng cho đường viền dưới */
+.menu li::after {
+  content: ""; /* Tạo pseudo-element */
+  display: block;
+  width: 100%; /* Chiều rộng bằng với phần tử cha */
+  height: 3px; /* Chiều cao của đường viền */
+  background-color: #ffcc00; /* Màu đường viền */
+  position: absolute; /* Định vị theo vị trí của phần tử cha */
+  left: 0;
+  bottom: -5px; /* Vị trí đường viền dưới */
+  transform: scaleX(0); /* Bắt đầu không hiển thị */
+  transition: transform 0.3s; /* Hiệu ứng cho đường viền */
+}
+
+.menu li:hover::after,
+.menu li.active::after {
+  transform: scaleX(1); /* Hiển thị đường viền khi hover hoặc đang hoạt động */
+}
+
+.about {
+  background-color: #f8f9fa; /* Light background color */
+  padding: 20px;
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  max-width: 600px; /* Maximum width */
+  margin: 40px auto; /* Center horizontally */
+  text-align: center; /* Center text */
+  transition: transform 0.3s, box-shadow 0.3s; /* Animation effect */
+}
+
+.about:hover {
+  transform: scale(1.02); /* Scale up slightly on hover */
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+.profile-photo {
+  width: 150px; /* Fixed width for the profile photo */
+  height: 150px; /* Fixed height for the profile photo */
+  border-radius: 50%; /* Circular image */
+  border: 4px solid #007bff; /* Blue border */
+  margin-top: 15px; /* Margin on top */
+  transition: transform 0.3s; /* Animation effect */
+}
+
+.profile-photo:hover {
+  transform: scale(1.1); /* Scale up image on hover */
+}
+
+h1 {
+  color: #007bff; /* Primary color */
+  margin-bottom: 10px; /* Spacing below heading */
+}
+
+h2 {
+  color: #343a40; /* Darker color for the name */
+  margin-bottom: 5px; /* Spacing below name */
+}
+
+p {
+  color: #495057; /* Dark grey for paragraph text */
+  line-height: 1.6; /* Line height for better readability */
+}
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0; /* Add some margin for spacing */
+}
+
+.piti-logo {
+  max-width: 150px; /* Adjust size as needed */
+  height: auto; /* Keep the aspect ratio */
+}
+.light-toggle {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column; /* Stack button and lightbulb vertically */
+  align-items: center; /* Center align items */
+}
+
+.light-toggle button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transition for effects */
+  font-weight: bold;
+  margin-bottom: 10px; /* Space between button and lightbulb */
+}
+
+.btn-light-on {
+  background-color: #28a745; /* Green when light is on */
+  color: white;
+  box-shadow: 0 0 15px rgba(40, 167, 69, 0.5);
+}
+
+.btn-light-off {
+  background-color: #dc3545; /* Red when light is off */
+  color: white;
+  box-shadow: 0 0 10px rgba(220, 53, 69, 0.5);
+}
+
+.lightbulb-on {
+  font-size: 24px;
+  color: #28a745; /* Green lightbulb */
+}
+
+.lightbulb-off {
+  font-size: 24px;
+  color: #dc3545; /* Red lightbulb */
+}
